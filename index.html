@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Facundo Castillo — Diseñador Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700;900&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+
+  <!-- ===================== MENÚ LATERAL (DESKTOP) ===================== -->
+  <nav class="menuLateral" id="menuLateral" aria-label="Navegación principal">
+
+    <!-- Logo -->
+    <div class="menuLateral__logo">
+      <img src="img/logo.png" alt="Logo FC" class="logoImg">
+    </div>
+
+    <!-- Indicador de disponibilidad -->
+    <div class="indicadorDisponibilidad" id="indicadorDisponibilidad">
+      <span class="indicadorDisponibilidad__circulo" id="circuloEstado"></span>
+      <span class="indicadorDisponibilidad__texto" id="textoEstado">Disponible para proyectos</span>
+    </div>
+
+    <!-- Links de navegación -->
+    <ul class="menuLateral__lista" role="list">
+      <li class="menuLateral__item">
+        <a href="#inicio" class="menuLateral__enlace activo" data-seccion="inicio">
+          <span class="menuLateral__indicador"></span>
+          INICIO
+        </a>
+      </li>
+      <li class="menuLateral__item">
+        <a href="#sobreMi" class="menuLateral__enlace" data-seccion="sobreMi">
+          <span class="menuLateral__indicador"></span>
+          SOBRE MÍ
+        </a>
+      </li>
+      <li class="menuLateral__item">
+        <a href="#proyectos" class="menuLateral__enlace" data-seccion="proyectos">
+          <span class="menuLateral__indicador"></span>
+          PROYECTOS
+        </a>
+      </li>
+      <li class="menuLateral__item">
+        <a href="#contacto" class="menuLateral__enlace" data-seccion="contacto">
+          <span class="menuLateral__indicador"></span>
+          CONTACTO
+        </a>
+      </li>
+    </ul>
+
+    <!-- Redes sociales -->
+    <div class="menuLateral__redes">
+      <a href="#" class="redSocial" aria-label="YouTube" title="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="#" class="redSocial" aria-label="Behance" title="Behance">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.714-3.073h4.738c-.109-1.862-1.287-2.406-2.188-2.406-1.013 0-2.28.515-2.55 2.406zM9.897 11.575c1.091-.46 1.752-1.354 1.752-2.668 0-2.339-1.688-3.672-4.675-3.672H1v13.532h5.848c3.253 0 5.255-1.483 5.255-4.053 0-1.544-.752-2.742-2.206-3.139zM4.348 7.762h2.287c1.039 0 1.935.389 1.935 1.543 0 1.154-.896 1.622-1.935 1.622H4.348V7.762zm0 7.512v-2.858h2.524c1.217 0 2.094.524 2.094 1.462 0 1.01-.877 1.396-2.094 1.396H4.348z"/></svg>
+      </a>
+      <a href="#" class="redSocial" aria-label="LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="#" class="redSocial" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+    <!-- Copyright -->
+    <p class="menuLateral__copyright">© Facundo Castillo</p>
+  </nav>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  <main class="contenedorPrincipal" id="contenedorPrincipal">
+
+    <!-- ===== SECCIÓN 1: INICIO / HERO ===== -->
+    <section class="seccion seccionInicio" id="inicio" data-seccion="inicio">
+      <div class="seccionInicio__contenido">
+        <div class="seccionInicio__texto">
+          <p class="seccionInicio__saludo">Hola, soy</p>
+          <h1 class="seccionInicio__nombre">Facundo<br>Castillo</h1>
+          <p class="seccionInicio__descripcion">
+            Diseñador Digital enfocado en diseño web<br>y edición de video.
+          </p>
+          <div class="seccionInicio__botones">
+            <a href="#proyectos" class="boton boton--primario">Ver Proyectos</a>
+            <a href="proyectos.html" class="boton boton--secundario">Todos los trabajos</a>
+          </div>
+        </div>
+
+        <!-- Foto con bloque Amber detrás -->
+        <div class="seccionInicio__fotoContenedor">
+          <div class="bloqueAmber" aria-hidden="true"></div>
+          <div class="seccionInicio__fotoMarco">
+            <img
+              src="img/facundocastillo1.png"
+              alt="Foto de Facundo Castillo"
+              class="seccionInicio__foto"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Indicador scroll -->
+      <div class="indicadorScroll" aria-hidden="true">
+        <span class="indicadorScroll__texto">SCROLL</span>
+        <svg class="indicadorScroll__flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===== SECCIÓN 2: SOBRE MÍ ===== -->
+    <section class="seccion seccionSobreMi" id="sobreMi" data-seccion="sobreMi">
+      <div class="seccionSobreMi__contenido">
+        <div class="seccionSobreMi__encabezado animarEntrada">
+          <span class="etiquetaTecnica">//about_me</span>
+          <h2 class="seccionSobreMi__titulo">Sobre Mí</h2>
+        </div>
+
+        <div class="seccionSobreMi__grid">
+          <div class="seccionSobreMi__texto animarEntrada">
+            <p>Soy diseñador digital y me interesa el diseño como un proceso de construcción. Busco llegar a soluciones claras y funcionales a partir de decisiones concretas, entendiendo el diseño como una forma de comunicar con propósito.</p>
+            <p>Vengo de disciplinas como la música, el skate o los videojuegos, donde mejorar implica práctica y repetición. Con el diseño me pasa algo similar: entiendo cada proyecto como un recorrido donde voy ordenando ideas hasta que encajan y cumplen una función clara.</p>
+            <p>Trabajo principalmente en desarrollo web y contenido visual. Me interesa que lo que hago funcione, sea claro y se entienda, sin agregar complejidad innecesaria.</p>
+          </div>
+
+          <div class="seccionSobreMi__habilidades animarEntrada">
+            <div class="tarjetaHabilidad">
+              <span class="etiquetaTecnica">01</span>
+              <h3>Diseño Web</h3>
+              <p>UI/UX, prototipado, sistemas de diseño y componentes listos para producción.</p>
+            </div>
+            <div class="tarjetaHabilidad">
+              <span class="etiquetaTecnica">02</span>
+              <h3>Identidad Visual</h3>
+              <p>Marca personal y corporativa, manuales de marca y sistemas visuales coherentes.</p>
+            </div>
+            <div class="tarjetaHabilidad">
+              <span class="etiquetaTecnica">03</span>
+              <h3>Edición de Video</h3>
+              <p>Contenido audiovisual, motion graphics y piezas para redes sociales y plataformas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="indicadorScroll" aria-hidden="true">
+        <span class="indicadorScroll__texto">SCROLL</span>
+        <svg class="indicadorScroll__flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===== SECCIÓN 3: PROYECTOS ===== -->
+    <section class="seccion seccionProyectos" id="proyectos" data-seccion="proyectos">
+      <div class="seccionProyectos__contenido">
+        <div class="seccionProyectos__encabezado animarEntrada">
+          <span class="etiquetaTecnica">//projects</span>
+          <h2 class="seccionProyectos__titulo">Mis Proyectos</h2>
+        </div>
+
+        <!-- Grilla de ladrillos trabados -->
+        <div class="rejillaLadrillos animarEntrada">
+
+          <!-- Tarjeta grande -->
+          <a href="proyectos.html" class="tarjetaLadrillo tarjetaLadrillo--grande" aria-label="Ver proyecto destacado">
+            <div class="tarjetaLadrillo__imagen tarjetaLadrillo__imagen--placeholder">
+              <div class="tarjetaLadrillo__overlay">
+                <span class="etiquetaTecnica">2024</span>
+                <h3>Identidad de Marca — FC</h3>
+                <p>Diseño de sistema visual completo, logotipo y manual de marca personal.</p>
+                <span class="tarjetaLadrillo__cta">Ver proyecto →</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Columna de tarjetas pequeñas -->
+          <div class="columnaLadrillos">
+            <a href="proyectos.html" class="tarjetaLadrillo tarjetaLadrillo--pequeña" aria-label="Ver proyecto web">
+              <div class="tarjetaLadrillo__imagen tarjetaLadrillo__imagen--placeholder2">
+                <div class="tarjetaLadrillo__overlay">
+                  <span class="etiquetaTecnica">2024</span>
+                  <h3>Portfolio Web</h3>
+                  <span class="tarjetaLadrillo__cta">Ver proyecto →</span>
+                </div>
+              </div>
+            </a>
+            <a href="proyectos.html" class="tarjetaLadrillo tarjetaLadrillo--pequeña" aria-label="Ver proyecto de video">
+              <div class="tarjetaLadrillo__imagen tarjetaLadrillo__imagen--placeholder3">
+                <div class="tarjetaLadrillo__overlay">
+                  <span class="etiquetaTecnica">2023</span>
+                  <h3>Video Editorial</h3>
+                  <span class="tarjetaLadrillo__cta">Ver proyecto →</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="seccionProyectos__pie animarEntrada">
+          <a href="proyectos.html" class="enlaceVerTodos">Ver todos los proyectos →</a>
+        </div>
+      </div>
+
+      <div class="indicadorScroll" aria-hidden="true">
+        <span class="indicadorScroll__texto">SCROLL</span>
+        <svg class="indicadorScroll__flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===== SECCIÓN 4: CONTACTO ===== -->
+    <section class="seccion seccionContacto" id="contacto" data-seccion="contacto">
+      <div class="seccionContacto__contenido">
+        <div class="animarEntrada">
+          <span class="etiquetaTecnica">//contact</span>
+          <h2 class="seccionContacto__titulo">¿Trabajamos<br><em>juntos</em>?</h2>
+          <p class="seccionContacto__descripcion">
+            Estoy disponible para proyectos freelance, colaboraciones y oportunidades a tiempo completo. Si tenés un proyecto en mente, hablemos.
+          </p>
+          <a href="mailto:hola@facundocastillo.com" class="boton boton--primario boton--grande">
+            Escribime un mensaje
+          </a>
+        </div>
+
+        <div class="seccionContacto__datos animarEntrada">
+          <div class="datoContacto">
+            <span class="etiquetaTecnica">email</span>
+            <a href="mailto:hola@facundocastillo.com">hola@facundocastillo.com</a>
+          </div>
+          <div class="datoContacto">
+            <span class="etiquetaTecnica">ubicación</span>
+            <span>Montevideo, Uruguay</span>
+          </div>
+          <div class="datoContacto">
+            <span class="etiquetaTecnica">disponibilidad</span>
+            <span class="estadoDisponible">● Abierto a proyectos</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="piePagina">
+        <p>© 2024 Facundo Castillo. Diseñado y construido con propósito.</p>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- ===================== MENÚ INFERIOR (MOBILE) ===================== -->
+  <nav class="menuMobile" id="menuMobile" aria-label="Navegación móvil">
+    <a href="#inicio" class="menuMobile__item activo" data-seccion="inicio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Inicio</span>
+    </a>
+    <a href="#sobreMi" class="menuMobile__item" data-seccion="sobreMi">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Sobre Mí</span>
+    </a>
+    <a href="#proyectos" class="menuMobile__item" data-seccion="proyectos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Proyectos</span>
+    </a>
+    <a href="#contacto" class="menuMobile__item" data-seccion="contacto">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span>Contacto</span>
+    </a>
+  </nav>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

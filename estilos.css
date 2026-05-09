@@ -1,0 +1,967 @@
+/* ================================================================
+   FACUNDO CASTILLO — Portfolio Personal
+   Sistema de diseño basado en manual de marca
+   ================================================================ */
+
+/* ---------------------------------------------------------------
+   VARIABLES GLOBALES (Sistema de colores y tipografías)
+--------------------------------------------------------------- */
+:root {
+  /* Colores principales */
+  --color-fondo:          #111827; /* Oxford Blue */
+  --color-texto:          #F8FAFC; /* Ghost White */
+  --color-acento:         #2563EB; /* Electric Blue */
+  --color-cuerpo:         #475569; /* Slate Grey */
+  --color-autor:          #D97706; /* Amber */
+
+  /* Colores derivados */
+  --color-superficie:     #1a2537;
+  --color-borde:          rgba(248, 250, 252, 0.08);
+  --color-overlay:        rgba(17, 24, 39, 0.85);
+
+  /* Tipografías */
+  --fuente-logo:          'Rubik', sans-serif;
+  --fuente-lectura:       'Inter', sans-serif;
+  --fuente-tecnica:       'JetBrains Mono', monospace;
+
+  /* Espaciados */
+  --ancho-menu:           250px;
+  --alto-menu-mobile:     70px;
+  --radio-borde:          8px;
+
+  /* Transiciones */
+  --transicion-rebote:    cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transicion-suave:     cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --duracion-animacion:   0.6s;
+}
+
+/* ---------------------------------------------------------------
+   RESET Y BASE
+--------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-lectura);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul { list-style: none; }
+
+/* ---------------------------------------------------------------
+   LAYOUT PRINCIPAL: MENÚ LATERAL + CONTENIDO
+--------------------------------------------------------------- */
+.contenedorPrincipal {
+  margin-left: var(--ancho-menu);
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------------------------------------
+   SECCIÓN BASE (Scroll Snap)
+--------------------------------------------------------------- */
+.seccion {
+  scroll-snap-align: start;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================================================================
+   MENÚ LATERAL (Desktop)
+================================================================ */
+.menuLateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--ancho-menu);
+  height: 100dvh;
+  background-color: var(--color-fondo);
+  border-right: 1px solid var(--color-borde);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 20px 24px;
+  z-index: 100;
+  gap: 8px;
+}
+
+/* Logo en menú lateral */
+.menuLateral__logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.logoImg {
+  width: 40px;
+  height: auto;
+  max-height: 48px;
+  object-fit: contain;
+}
+
+/* Indicador de disponibilidad */
+.indicadorDisponibilidad {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: rgba(255,255,255,0.04);
+  border-radius: var(--radio-borde);
+  margin-bottom: 16px;
+  border: 1px solid var(--color-borde);
+}
+
+.indicadorDisponibilidad__circulo {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Estado: disponible */
+.indicadorDisponibilidad__circulo.disponible {
+  background-color: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  animation: pulso 2s infinite;
+}
+
+/* Estado: no disponible */
+.indicadorDisponibilidad__circulo.noDisponible {
+  background-color: #ef4444;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  animation: pulso 2s infinite;
+}
+
+@keyframes pulso {
+  0%   { box-shadow: 0 0 0 0 currentColor; }
+  70%  { box-shadow: 0 0 0 6px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.indicadorDisponibilidad__texto {
+  font-family: var(--fuente-tecnica);
+  font-size: 10px;
+  color: var(--color-cuerpo);
+  line-height: 1.3;
+  color: var(--color-texto);
+}
+
+/* Lista de navegación */
+.menuLateral__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.menuLateral__enlace {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  font-family: var(--fuente-tecnica);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--color-cuerpo);
+  border-radius: var(--radio-borde);
+  transition: color var(--duracion-animacion) var(--transicion-suave),
+              background-color var(--duracion-animacion) var(--transicion-suave);
+  position: relative;
+  overflow: hidden;
+}
+
+.menuLateral__enlace:hover {
+  color: var(--color-texto);
+  background-color: rgba(255,255,255,0.04);
+}
+
+/* Indicador Amber para el enlace activo */
+.menuLateral__indicador {
+  width: 4px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--color-autor);
+  border-radius: 0 4px 4px 0;
+  transform: scaleY(0);
+  transition: transform 0.3s var(--transicion-rebote);
+}
+
+.menuLateral__enlace.activo {
+  color: var(--color-texto);
+  background-color: rgba(217, 119, 6, 0.1);
+  font-weight: 600;
+}
+
+.menuLateral__enlace.activo .menuLateral__indicador {
+  transform: scaleY(1);
+}
+
+/* Redes sociales */
+.menuLateral__redes {
+  display: flex;
+  gap: 16px;
+  padding: 16px 12px;
+  border-top: 1px solid var(--color-borde);
+}
+
+.redSocial {
+  width: 20px;
+  height: 20px;
+  color: var(--color-cuerpo);
+  transition: color 0.3s var(--transicion-suave);
+  display: flex;
+  align-items: center;
+}
+
+.redSocial svg { width: 18px; height: 18px; }
+
+.redSocial:hover { color: var(--color-texto); }
+
+/* Copyright */
+.menuLateral__copyright {
+  font-family: var(--fuente-tecnica);
+  font-size: 10px;
+  color: var(--color-cuerpo);
+  padding: 0 12px;
+  opacity: 0.5;
+}
+
+/* ================================================================
+   ETIQUETA TÉCNICA (reutilizable)
+================================================================ */
+.etiquetaTecnica {
+  font-family: var(--fuente-tecnica);
+  font-size: 11px;
+  color: var(--color-autor);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ================================================================
+   INDICADOR DE SCROLL
+================================================================ */
+.indicadorScroll {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-acento);
+  animation: flotarScroll 2s ease-in-out infinite;
+}
+
+.indicadorScroll__texto {
+  font-family: var(--fuente-tecnica);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+}
+
+.indicadorScroll__flecha {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes flotarScroll {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  50%       { transform: translateX(-50%) translateY(6px); opacity: 0.5; }
+}
+
+/* ================================================================
+   SECCIÓN INICIO (Hero)
+================================================================ */
+.seccionInicio {
+  background-color: var(--color-fondo);
+  padding: 60px 60px 80px;
+}
+
+.seccionInicio__contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.seccionInicio__texto {
+  flex: 1;
+  max-width: 480px;
+}
+
+.seccionInicio__saludo {
+  font-family: var(--fuente-tecnica);
+  font-size: 14px;
+  color: var(--color-cuerpo);
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.seccionInicio__nombre {
+  font-family: var(--fuente-logo);
+  font-size: clamp(44px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--color-texto);
+  margin-bottom: 20px;
+}
+
+.seccionInicio__descripcion {
+  font-size: 16px;
+  color: var(--color-cuerpo);
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.seccionInicio__botones {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Foto con bloque Amber (efecto profundidad/capas) */
+.seccionInicio__fotoContenedor {
+  position: relative;
+  flex-shrink: 0;
+  width: clamp(220px, 28vw, 340px);
+  aspect-ratio: 3/4;
+}
+
+.bloqueAmber {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-autor);
+  border-radius: var(--radio-borde);
+  z-index: 0;
+}
+
+.seccionInicio__fotoMarco {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radio-borde);
+  overflow: hidden;
+  background-color: var(--color-superficie);
+}
+
+.seccionInicio__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radio-borde);
+  display: block;
+  /* Si la imagen tiene fondo negro, lo mezclamos */
+  mix-blend-mode: normal;
+}
+
+/* ================================================================
+   BOTONES
+================================================================ */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: var(--radio-borde);
+  font-family: var(--fuente-lectura);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  transition: all 0.3s var(--transicion-rebote);
+  cursor: pointer;
+}
+
+.boton--primario {
+  background-color: var(--color-acento);
+  color: var(--color-texto);
+  border: 2px solid var(--color-acento);
+}
+
+.boton--primario:hover {
+  background-color: transparent;
+  color: var(--color-acento);
+  transform: translateY(-2px);
+}
+
+.boton--secundario {
+  background-color: transparent;
+  color: var(--color-texto);
+  border: 2px solid rgba(248, 250, 252, 0.2);
+}
+
+.boton--secundario:hover {
+  border-color: var(--color-texto);
+  transform: translateY(-2px);
+}
+
+.boton--grande {
+  padding: 16px 40px;
+  font-size: 16px;
+}
+
+/* ================================================================
+   SECCIÓN SOBRE MÍ
+================================================================ */
+.seccionSobreMi {
+  background-color: var(--color-texto); /* Ghost White para contraste */
+  color: var(--color-fondo);
+  padding: 80px 60px;
+}
+
+.seccionSobreMi .indicadorScroll {
+  color: var(--color-acento);
+}
+
+.seccionSobreMi__contenido {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.seccionSobreMi__encabezado {
+  margin-bottom: 48px;
+}
+
+.seccionSobreMi__encabezado .etiquetaTecnica {
+  color: var(--color-autor);
+}
+
+.seccionSobreMi__titulo {
+  font-family: var(--fuente-logo);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  color: var(--color-fondo);
+  line-height: 1.1;
+}
+
+.seccionSobreMi__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.seccionSobreMi__texto p {
+  color: var(--color-cuerpo);
+  line-height: 1.75;
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.seccionSobreMi__habilidades {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tarjetaHabilidad {
+  padding: 20px 24px;
+  border-radius: var(--radio-borde);
+  border: 1px solid rgba(17, 24, 39, 0.1);
+  background-color: rgba(17, 24, 39, 0.03);
+  transition: border-color 0.3s ease, transform 0.3s var(--transicion-rebote);
+}
+
+.tarjetaHabilidad:hover {
+  border-color: var(--color-autor);
+  transform: translateX(4px);
+}
+
+.tarjetaHabilidad h3 {
+  font-family: var(--fuente-logo);
+  font-size: 18px;
+  color: var(--color-fondo);
+  margin: 4px 0 8px;
+}
+
+.tarjetaHabilidad p {
+  color: var(--color-cuerpo);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ================================================================
+   SECCIÓN PROYECTOS
+================================================================ */
+.seccionProyectos {
+  background-color: var(--color-fondo);
+  padding: 60px 60px 80px;
+}
+
+.seccionProyectos__contenido {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.seccionProyectos__encabezado {
+  display: flex;
+  flex-direction: column;
+}
+
+.seccionProyectos__titulo {
+  font-family: var(--fuente-logo);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--color-texto);
+  line-height: 1.1;
+}
+
+/* Rejilla de Ladrillos Trabados */
+.rejillaLadrillos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  height: clamp(320px, 40vh, 460px);
+}
+
+.columnaLadrillos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Tarjeta de proyecto */
+.tarjetaLadrillo {
+  display: block;
+  border-radius: var(--radio-borde);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  flex: 1;
+}
+
+.tarjetaLadrillo--grande {
+  height: 100%;
+}
+
+.tarjetaLadrillo--pequeña {
+  flex: 1;
+}
+
+.tarjetaLadrillo__imagen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radio-borde);
+  transition: transform 0.5s var(--transicion-suave);
+}
+
+/* Placeholders con gradientes temáticos */
+.tarjetaLadrillo__imagen--placeholder {
+  background: linear-gradient(135deg, #1a2537 0%, #0f1923 60%, #1a2537 100%);
+}
+
+.tarjetaLadrillo__imagen--placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    rgba(37, 99, 235, 0.04) 20px,
+    rgba(37, 99, 235, 0.04) 40px
+  );
+}
+
+.tarjetaLadrillo__imagen--placeholder2 {
+  background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%);
+}
+
+.tarjetaLadrillo__imagen--placeholder3 {
+  background: linear-gradient(135deg, #111827 0%, #1c1917 100%);
+}
+
+.tarjetaLadrillo:hover .tarjetaLadrillo__imagen {
+  transform: scale(1.03);
+}
+
+/* Overlay con info del proyecto */
+.tarjetaLadrillo__overlay {
+  position: absolute;
+  inset: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(17,24,39,0.95) 0%, transparent 60%);
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+
+.tarjetaLadrillo:hover .tarjetaLadrillo__overlay {
+  background: linear-gradient(to top, rgba(17,24,39,0.98) 0%, rgba(17,24,39,0.3) 100%);
+}
+
+.tarjetaLadrillo__overlay h3 {
+  font-family: var(--fuente-logo);
+  font-size: clamp(16px, 2vw, 22px);
+  color: var(--color-texto);
+  margin-bottom: 8px;
+}
+
+.tarjetaLadrillo__overlay p {
+  color: var(--color-cuerpo);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.tarjetaLadrillo__cta {
+  font-family: var(--fuente-tecnica);
+  font-size: 12px;
+  color: var(--color-acento);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.3s ease, transform 0.3s var(--transicion-rebote);
+  display: block;
+}
+
+.tarjetaLadrillo:hover .tarjetaLadrillo__cta {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Pie de sección proyectos */
+.seccionProyectos__pie {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.enlaceVerTodos {
+  font-family: var(--fuente-tecnica);
+  font-size: 13px;
+  color: var(--color-cuerpo);
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.enlaceVerTodos:hover {
+  color: var(--color-acento);
+  letter-spacing: 0.1em;
+}
+
+/* ================================================================
+   SECCIÓN CONTACTO
+================================================================ */
+.seccionContacto {
+  background-color: var(--color-superficie);
+  padding: 60px 60px 40px;
+  justify-content: space-between;
+}
+
+.seccionContacto__contenido {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: start;
+  flex: 1;
+  padding-top: 40px;
+}
+
+.seccionContacto__titulo {
+  font-family: var(--fuente-logo);
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--color-texto);
+  margin: 8px 0 20px;
+}
+
+.seccionContacto__titulo em {
+  font-style: normal;
+  color: var(--color-autor);
+}
+
+.seccionContacto__descripcion {
+  color: var(--color-cuerpo);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 400px;
+}
+
+.seccionContacto__datos {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-top: 56px;
+}
+
+.datoContacto {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.datoContacto .etiquetaTecnica {
+  margin-bottom: 2px;
+}
+
+.datoContacto a,
+.datoContacto span {
+  font-size: 14px;
+  color: var(--color-cuerpo);
+  transition: color 0.3s ease;
+}
+
+.datoContacto a:hover { color: var(--color-acento); }
+
+.estadoDisponible {
+  color: #22c55e !important;
+  font-family: var(--fuente-tecnica);
+  font-size: 13px !important;
+}
+
+/* Pie de página */
+.piePagina {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--color-borde);
+}
+
+.piePagina p {
+  font-family: var(--fuente-tecnica);
+  font-size: 11px;
+  color: var(--color-cuerpo);
+  opacity: 0.5;
+}
+
+/* ================================================================
+   MENÚ INFERIOR MOBILE
+================================================================ */
+.menuMobile {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--alto-menu-mobile);
+  background-color: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--color-borde);
+  z-index: 100;
+  padding: 0 8px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.menuMobile__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--color-cuerpo);
+  font-family: var(--fuente-tecnica);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  transition: color 0.3s var(--transicion-rebote);
+  position: relative;
+  padding: 8px 4px;
+}
+
+.menuMobile__item svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.8;
+  transition: transform 0.3s var(--transicion-rebote);
+}
+
+.menuMobile__item.activo {
+  color: var(--color-autor);
+}
+
+.menuMobile__item.activo svg {
+  transform: translateY(-2px);
+}
+
+.menuMobile__item.activo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 3px;
+  background-color: var(--color-autor);
+  border-radius: 0 0 4px 4px;
+}
+
+/* ================================================================
+   ANIMACIONES DE ENTRADA (Intersection Observer)
+================================================================ */
+.animarEntrada {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity var(--duracion-animacion) var(--transicion-suave),
+    transform var(--duracion-animacion) var(--transicion-rebote);
+}
+
+.animarEntrada.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Retardo escalonado para elementos dentro de una sección */
+.animarEntrada:nth-child(1) { transition-delay: 0.05s; }
+.animarEntrada:nth-child(2) { transition-delay: 0.15s; }
+.animarEntrada:nth-child(3) { transition-delay: 0.25s; }
+
+/* ================================================================
+   ESTILOS DE SELECCIÓN
+================================================================ */
+::selection {
+  background-color: var(--color-autor);
+  color: var(--color-fondo);
+}
+
+/* ================================================================
+   SCROLLBAR personalizada (solo Chrome/Edge)
+================================================================ */
+.contenedorPrincipal::-webkit-scrollbar {
+  width: 4px;
+}
+
+.contenedorPrincipal::-webkit-scrollbar-track {
+  background: var(--color-fondo);
+}
+
+.contenedorPrincipal::-webkit-scrollbar-thumb {
+  background: var(--color-autor);
+  border-radius: 2px;
+}
+
+/* ================================================================
+   RESPONSIVE — MOBILE / TABLET
+================================================================ */
+@media (max-width: 900px) {
+  /* Ocultar menú lateral */
+  .menuLateral { display: none; }
+
+  /* Mostrar menú mobile */
+  .menuMobile {
+    display: flex;
+    align-items: stretch;
+  }
+
+  /* Quitar margen del menú lateral */
+  .contenedorPrincipal {
+    margin-left: 0;
+    padding-bottom: var(--alto-menu-mobile);
+  }
+
+  /* Secciones — padding reducido */
+  .seccionInicio { padding: 60px 24px 80px; }
+  .seccionSobreMi { padding: 60px 24px 80px; }
+  .seccionProyectos { padding: 60px 24px 80px; }
+  .seccionContacto { padding: 60px 24px 40px; }
+
+  /* Hero: apilar verticalmente */
+  .seccionInicio__contenido {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .seccionInicio__fotoContenedor {
+    width: min(260px, 70vw);
+    align-self: center;
+  }
+
+  .seccionInicio__nombre { font-size: clamp(40px, 10vw, 60px); }
+
+  /* Sobre mí: una columna */
+  .seccionSobreMi__grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  /* Proyectos */
+  .rejillaLadrillos {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 12px;
+  }
+
+  .tarjetaLadrillo--grande { height: 240px; }
+  .tarjetaLadrillo--pequeña { height: 160px; }
+
+  .columnaLadrillos {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  /* Contacto */
+  .seccionContacto__contenido {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .seccionContacto__datos { padding-top: 0; }
+
+  /* Ocultar indicadores de scroll en mobile */
+  .indicadorScroll { display: none; }
+}
+
+@media (max-width: 480px) {
+  .seccionInicio__botones {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .boton { width: 100%; text-align: center; }
+
+  .columnaLadrillos { flex-direction: column; }
+  .tarjetaLadrillo--pequeña { height: 140px; }
+}

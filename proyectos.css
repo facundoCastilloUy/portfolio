@@ -1,0 +1,368 @@
+/* ================================================================
+   ESTILOS ESPECÍFICOS — proyectos.html
+   Complementa estilos.css sin duplicar variables
+   ================================================================ */
+
+/* ---------------------------------------------------------------
+   LAYOUT GENERAL DE LA PÁGINA
+--------------------------------------------------------------- */
+.paginaProyectos body,
+.paginaProyectos {
+  background-color: var(--color-fondo);
+}
+
+/* Cuando estamos en proyectos.html, el body no tiene scroll snap */
+.paginaProyectos .contenedorPrincipal {
+  scroll-snap-type: none;
+  overflow-y: visible;
+}
+
+/* Layout principal de proyectos (sin scroll snap) */
+.contenidoProyectos {
+  margin-left: var(--ancho-menu);
+  padding: 60px 60px 80px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+/* ---------------------------------------------------------------
+   ENCABEZADO DE LA PÁGINA DE PROYECTOS
+--------------------------------------------------------------- */
+.encabezadoProyectos {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 900px;
+}
+
+.botonVolver {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fuente-tecnica);
+  font-size: 12px;
+  color: var(--color-cuerpo);
+  letter-spacing: 0.08em;
+  transition: color 0.3s ease, gap 0.3s ease;
+  width: fit-content;
+}
+
+.botonVolver svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s var(--transicion-rebote);
+}
+
+.botonVolver:hover {
+  color: var(--color-texto);
+  gap: 12px;
+}
+
+.botonVolver:hover svg {
+  transform: translateX(-4px);
+}
+
+.encabezadoProyectos__titulo {
+  font-family: var(--fuente-logo);
+  font-size: clamp(44px, 6vw, 72px);
+  font-weight: 700;
+  color: var(--color-texto);
+  line-height: 1.05;
+}
+
+.encabezadoProyectos__descripcion {
+  color: var(--color-cuerpo);
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+/* ---------------------------------------------------------------
+   FILTROS DE CATEGORÍA
+--------------------------------------------------------------- */
+.filtrosCategorias {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.filtroBtnCategoria {
+  font-family: var(--fuente-tecnica);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 8px 16px;
+  border-radius: var(--radio-borde);
+  border: 1px solid var(--color-borde);
+  background-color: transparent;
+  color: var(--color-cuerpo);
+  cursor: pointer;
+  transition: all 0.3s var(--transicion-rebote);
+}
+
+.filtroBtnCategoria:hover {
+  border-color: rgba(248, 250, 252, 0.3);
+  color: var(--color-texto);
+}
+
+.filtroBtnCategoria.activo {
+  background-color: var(--color-autor);
+  border-color: var(--color-autor);
+  color: var(--color-fondo);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------
+   REJILLA TÉCNICA DE PROYECTOS
+--------------------------------------------------------------- */
+.rejillaTecnica {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 900px;
+}
+
+/* ---------------------------------------------------------------
+   TARJETA TÉCNICA DE PROYECTO
+   Layout horizontal: imagen izquierda, info derecha
+--------------------------------------------------------------- */
+.tarjetaTecnica {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--color-borde);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tarjetaTecnica:first-child {
+  border-top: 1px solid var(--color-borde);
+}
+
+/* Imagen del proyecto */
+.tarjetaTecnica__imagen {
+  aspect-ratio: 4/3;
+  border-radius: var(--radio-borde);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  transition: transform 0.4s var(--transicion-rebote);
+}
+
+.tarjetaTecnica:hover .tarjetaTecnica__imagen {
+  transform: scale(1.02);
+}
+
+/* Placeholders con gradientes distintos por proyecto */
+.tarjetaTecnica__imagen--1 {
+  background: linear-gradient(135deg, #1a2537 0%, #0d1929 100%);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+}
+.tarjetaTecnica__imagen--1::before {
+  content: 'FC';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fuente-logo);
+  font-size: 64px;
+  font-weight: 700;
+  color: rgba(217, 119, 6, 0.3);
+  letter-spacing: -2px;
+}
+
+.tarjetaTecnica__imagen--2 {
+  background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%);
+  border: 1px solid rgba(37, 99, 235, 0.1);
+}
+.tarjetaTecnica__imagen--2::before {
+  content: '</>';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fuente-tecnica);
+  font-size: 40px;
+  color: rgba(37, 99, 235, 0.4);
+}
+
+.tarjetaTecnica__imagen--3 {
+  background: linear-gradient(135deg, #111827 0%, #1c1917 100%);
+  border: 1px solid rgba(217, 119, 6, 0.1);
+}
+.tarjetaTecnica__imagen--3::before {
+  content: '▶';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: rgba(217, 119, 6, 0.35);
+}
+
+.tarjetaTecnica__imagen--4 {
+  background: linear-gradient(135deg, #111827 0%, #0f1729 100%);
+  border: 1px solid rgba(248, 250, 252, 0.06);
+}
+.tarjetaTecnica__imagen--4::before {
+  content: '◻◻\A◻◻';
+  white-space: pre;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: rgba(37, 99, 235, 0.3);
+  letter-spacing: 8px;
+  line-height: 1.4;
+}
+
+/* Número del proyecto */
+.tarjetaTecnica__numero {
+  font-family: var(--fuente-tecnica);
+  font-size: 11px;
+  color: rgba(248, 250, 252, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+/* Info del proyecto */
+.tarjetaTecnica__info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.tarjetaTecnica__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tarjetaTecnica__meta .etiquetaTecnica {
+  margin-bottom: 0;
+}
+
+.tarjetaTecnica__estado {
+  font-family: var(--fuente-tecnica);
+  font-size: 10px;
+  color: var(--color-cuerpo);
+  letter-spacing: 0.05em;
+}
+
+.tarjetaTecnica__estado.disponible {
+  color: #22c55e;
+}
+
+.tarjetaTecnica__titulo {
+  font-family: var(--fuente-logo);
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  color: var(--color-texto);
+  line-height: 1.2;
+}
+
+.tarjetaTecnica__descripcion {
+  color: var(--color-cuerpo);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Tags de tecnologías */
+.tarjetaTecnica__tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tagProyecto {
+  font-family: var(--fuente-tecnica);
+  font-size: 10px;
+  color: var(--color-cuerpo);
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--color-borde);
+  letter-spacing: 0.05em;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.tarjetaTecnica:hover .tagProyecto {
+  border-color: rgba(217, 119, 6, 0.3);
+  color: var(--color-texto);
+}
+
+.tarjetaTecnica__cta {
+  width: fit-content;
+  padding: 10px 20px;
+  font-size: 13px;
+}
+
+/* ---------------------------------------------------------------
+   PIE DE LA PÁGINA DE PROYECTOS
+--------------------------------------------------------------- */
+.piePaginaProyectos {
+  max-width: 900px;
+  padding-top: 48px;
+  border-top: 1px solid var(--color-borde);
+}
+
+.piePaginaProyectos__contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.piePaginaProyectos__texto {
+  font-family: var(--fuente-logo);
+  font-size: 20px;
+  color: var(--color-texto);
+  margin-bottom: 16px;
+}
+
+/* ---------------------------------------------------------------
+   RESPONSIVE — PROYECTOS
+--------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .contenidoProyectos {
+    margin-left: 0;
+    padding: 40px 24px 100px;
+    gap: 40px;
+  }
+
+  .tarjetaTecnica {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .tarjetaTecnica__imagen {
+    aspect-ratio: 16/9;
+  }
+
+  .piePaginaProyectos__contenido {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .filtrosCategorias {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .filtroBtnCategoria {
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyectos — Facundo Castillo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700;900&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="estilos.css" />
+  <link rel="stylesheet" href="proyectos.css" />
+</head>
+<body class="paginaProyectos">
+
+  <!-- Menú lateral (igual que index) -->
+  <nav class="menuLateral" id="menuLateral" aria-label="Navegación principal">
+    <div class="menuLateral__logo">
+      <img src="img/logo.png" alt="Logo FC" class="logoImg">
+    </div>
+
+    <div class="indicadorDisponibilidad" id="indicadorDisponibilidad">
+      <span class="indicadorDisponibilidad__circulo disponible" id="circuloEstado"></span>
+      <span class="indicadorDisponibilidad__texto" id="textoEstado">Disponible para proyectos</span>
+    </div>
+
+    <ul class="menuLateral__lista" role="list">
+      <li class="menuLateral__item">
+        <a href="index.html#inicio" class="menuLateral__enlace">
+          <span class="menuLateral__indicador"></span>
+          INICIO
+        </a>
+      </li>
+      <li class="menuLateral__item">
+        <a href="index.html#sobreMi" class="menuLateral__enlace">
+          <span class="menuLateral__indicador"></span>
+          SOBRE MÍ
+        </a>
+      </li>
+      <li class="menuLateral__item">
+        <a href="proyectos.html" class="menuLateral__enlace activo">
+          <span class="menuLateral__indicador"></span>
+          PROYECTOS
+        </a>
+      </li>
+      <li class="menuLateral__item">
+        <a href="index.html#contacto" class="menuLateral__enlace">
+          <span class="menuLateral__indicador"></span>
+          CONTACTO
+        </a>
+      </li>
+    </ul>
+
+    <div class="menuLateral__redes">
+      <a href="#" class="redSocial" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="#" class="redSocial" aria-label="Behance">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.714-3.073h4.738c-.109-1.862-1.287-2.406-2.188-2.406-1.013 0-2.28.515-2.55 2.406zM9.897 11.575c1.091-.46 1.752-1.354 1.752-2.668 0-2.339-1.688-3.672-4.675-3.672H1v13.532h5.848c3.253 0 5.255-1.483 5.255-4.053 0-1.544-.752-2.742-2.206-3.139zM4.348 7.762h2.287c1.039 0 1.935.389 1.935 1.543 0 1.154-.896 1.622-1.935 1.622H4.348V7.762zm0 7.512v-2.858h2.524c1.217 0 2.094.524 2.094 1.462 0 1.01-.877 1.396-2.094 1.396H4.348z"/></svg>
+      </a>
+      <a href="#" class="redSocial" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="#" class="redSocial" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+    <p class="menuLateral__copyright">© Facundo Castillo</p>
+  </nav>
+
+  <!-- ===================== CONTENIDO PROYECTOS ===================== -->
+  <main class="contenidoProyectos">
+
+    <!-- Encabezado de página -->
+    <header class="encabezadoProyectos animarEntrada">
+      <a href="index.html" class="botonVolver">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Volver
+      </a>
+      <div class="encabezadoProyectos__textos">
+        <span class="etiquetaTecnica">//all_projects</span>
+        <h1 class="encabezadoProyectos__titulo">Todos los<br>Proyectos</h1>
+        <p class="encabezadoProyectos__descripcion">
+          Un recorrido por trabajos de diseño web, identidad visual y contenido audiovisual.
+        </p>
+      </div>
+
+      <!-- Filtros de categoría -->
+      <div class="filtrosCategorias" role="group" aria-label="Filtrar por categoría">
+        <button class="filtroBtnCategoria activo" data-filtro="todos">Todos</button>
+        <button class="filtroBtnCategoria" data-filtro="web">Diseño Web</button>
+        <button class="filtroBtnCategoria" data-filtro="identidad">Identidad</button>
+        <button class="filtroBtnCategoria" data-filtro="video">Video</button>
+      </div>
+    </header>
+
+    <!-- Grilla técnica de proyectos -->
+    <section class="rejillaTecnica" id="rejillaTecnica" aria-label="Lista de proyectos">
+
+      <!-- Proyecto 1 -->
+      <article class="tarjetaTecnica animarEntrada" data-categoria="identidad">
+        <div class="tarjetaTecnica__imagen tarjetaTecnica__imagen--1">
+          <span class="tarjetaTecnica__numero">01</span>
+        </div>
+        <div class="tarjetaTecnica__info">
+          <div class="tarjetaTecnica__meta">
+            <span class="etiquetaTecnica">identidad / 2024</span>
+            <span class="tarjetaTecnica__estado disponible">● Completado</span>
+          </div>
+          <h2 class="tarjetaTecnica__titulo">Identidad de Marca — FC</h2>
+          <p class="tarjetaTecnica__descripcion">
+            Diseño de sistema visual completo para la marca personal de Facundo Castillo. Incluye logotipo, paleta de colores, tipografías, manual de marca y aplicaciones en diferentes soportes.
+          </p>
+          <div class="tarjetaTecnica__tags">
+            <span class="tagProyecto">Figma</span>
+            <span class="tagProyecto">Identidad Visual</span>
+            <span class="tagProyecto">Manual de Marca</span>
+          </div>
+          <a href="#" class="boton boton--secundario tarjetaTecnica__cta">Ver proyecto →</a>
+        </div>
+      </article>
+
+      <!-- Proyecto 2 -->
+      <article class="tarjetaTecnica animarEntrada" data-categoria="web">
+        <div class="tarjetaTecnica__imagen tarjetaTecnica__imagen--2">
+          <span class="tarjetaTecnica__numero">02</span>
+        </div>
+        <div class="tarjetaTecnica__info">
+          <div class="tarjetaTecnica__meta">
+            <span class="etiquetaTecnica">web / 2024</span>
+            <span class="tarjetaTecnica__estado disponible">● En progreso</span>
+          </div>
+          <h2 class="tarjetaTecnica__titulo">Portfolio Web Personal</h2>
+          <p class="tarjetaTecnica__descripcion">
+            Diseño y desarrollo del portfolio personal. Arquitectura de la información, wireframes, prototipado en Figma y desarrollo frontend con HTML, CSS y JavaScript vanilla.
+          </p>
+          <div class="tarjetaTecnica__tags">
+            <span class="tagProyecto">HTML/CSS</span>
+            <span class="tagProyecto">JavaScript</span>
+            <span class="tagProyecto">Figma</span>
+          </div>
+          <a href="#" class="boton boton--secundario tarjetaTecnica__cta">Ver proyecto →</a>
+        </div>
+      </article>
+
+      <!-- Proyecto 3 -->
+      <article class="tarjetaTecnica animarEntrada" data-categoria="video">
+        <div class="tarjetaTecnica__imagen tarjetaTecnica__imagen--3">
+          <span class="tarjetaTecnica__numero">03</span>
+        </div>
+        <div class="tarjetaTecnica__info">
+          <div class="tarjetaTecnica__meta">
+            <span class="etiquetaTecnica">video / 2023</span>
+            <span class="tarjetaTecnica__estado">● Completado</span>
+          </div>
+          <h2 class="tarjetaTecnica__titulo">Video Editorial — Contenido Digital</h2>
+          <p class="tarjetaTecnica__descripcion">
+            Edición y producción de contenido audiovisual para plataformas digitales. Gestión del ritmo visual, motion graphics y adaptación de piezas a diferentes formatos y redes sociales.
+          </p>
+          <div class="tarjetaTecnica__tags">
+            <span class="tagProyecto">Premiere Pro</span>
+            <span class="tagProyecto">After Effects</span>
+            <span class="tagProyecto">Motion</span>
+          </div>
+          <a href="#" class="boton boton--secundario tarjetaTecnica__cta">Ver proyecto →</a>
+        </div>
+      </article>
+
+      <!-- Proyecto 4 -->
+      <article class="tarjetaTecnica animarEntrada" data-categoria="web">
+        <div class="tarjetaTecnica__imagen tarjetaTecnica__imagen--4">
+          <span class="tarjetaTecnica__numero">04</span>
+        </div>
+        <div class="tarjetaTecnica__info">
+          <div class="tarjetaTecnica__meta">
+            <span class="etiquetaTecnica">web / 2023</span>
+            <span class="tarjetaTecnica__estado">● Completado</span>
+          </div>
+          <h2 class="tarjetaTecnica__titulo">Diseño de Interfaz — App Interna</h2>
+          <p class="tarjetaTecnica__descripcion">
+            Diseño de interfaz y sistema de componentes para herramienta interna. Proceso completo desde research hasta entrega de assets listos para desarrollo.
+          </p>
+          <div class="tarjetaTecnica__tags">
+            <span class="tagProyecto">Figma</span>
+            <span class="tagProyecto">UI/UX</span>
+            <span class="tagProyecto">Design System</span>
+          </div>
+          <a href="#" class="boton boton--secundario tarjetaTecnica__cta">Ver proyecto →</a>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Pie de la página de proyectos -->
+    <footer class="piePaginaProyectos animarEntrada">
+      <div class="piePaginaProyectos__contenido">
+        <div>
+          <p class="piePaginaProyectos__texto">¿Tenés un proyecto en mente?</p>
+          <a href="index.html#contacto" class="boton boton--primario">Hablemos →</a>
+        </div>
+        <p class="menuLateral__copyright">© 2024 Facundo Castillo</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Menú mobile -->
+  <nav class="menuMobile" id="menuMobile" aria-label="Navegación móvil">
+    <a href="index.html#inicio" class="menuMobile__item" data-seccion="inicio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Inicio</span>
+    </a>
+    <a href="index.html#sobreMi" class="menuMobile__item" data-seccion="sobreMi">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Sobre Mí</span>
+    </a>
+    <a href="proyectos.html" class="menuMobile__item activo" data-seccion="proyectos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Proyectos</span>
+    </a>
+    <a href="index.html#contacto" class="menuMobile__item" data-seccion="contacto">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span>Contacto</span>
+    </a>
+  </nav>
+
+  <script src="scripts.js"></script>
+  <script>
+    // Script específico para filtros de proyectos
+    document.addEventListener('DOMContentLoaded', () => {
+      const botonesFiltro = document.querySelectorAll('.filtroBtnCategoria');
+      const tarjetas = document.querySelectorAll('.tarjetaTecnica');
+
+      botonesFiltro.forEach(boton => {
+        boton.addEventListener('click', () => {
+          // Actualizar botón activo
+          botonesFiltro.forEach(b => b.classList.remove('activo'));
+          boton.classList.add('activo');
+
+          const filtro = boton.dataset.filtro;
+
+          // Filtrar tarjetas con animación
+          tarjetas.forEach(tarjeta => {
+            const categoriaProyecto = tarjeta.dataset.categoria;
+            const esVisible = filtro === 'todos' || categoriaProyecto === filtro;
+
+            tarjeta.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+            if (esVisible) {
+              tarjeta.style.opacity = '1';
+              tarjeta.style.transform = 'translateY(0)';
+              tarjeta.style.pointerEvents = 'auto';
+              tarjeta.removeAttribute('aria-hidden');
+            } else {
+              tarjeta.style.opacity = '0.15';
+              tarjeta.style.transform = 'scale(0.98)';
+              tarjeta.style.pointerEvents = 'none';
+              tarjeta.setAttribute('aria-hidden', 'true');
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
