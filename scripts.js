@@ -16,6 +16,138 @@ const qs = (selector, base = document) => base.querySelector(selector);
 const qsAll = (selector, base = document) => [...base.querySelectorAll(selector)];
 
 // ---------------------------------------------------------------
+// DATOS DE PROYECTOS
+// Se usan para renderizar las secciones de proyectos en index.html y proyectos.html
+// ---------------------------------------------------------------
+
+const proyectos = [
+  {
+    id: 1,
+    titulo: 'Marca Personal',
+    categoriaFiltro: 'branding',
+    descripcion: 'Sistema visual personal basado en estructura, criterio y claridad.',
+    tipo: 'Branding / Identidad personal',
+    url: 'https://www.behance.net/gallery/249255943/Marca-Personal',
+    linkText: 'Ver proyecto',
+    preview: 'img/portada_marcapersonal.png',
+    año: '2024',
+  },
+  {
+    id: 2,
+    titulo: 'Apertura de sistema',
+    categoriaFiltro: 'branding',
+    descripcion: 'Apertura de sistema visual para una marca con foco en modularidad y flexibilidad.',
+    tipo: 'Identidad visual / Sistema gráfico',
+    url: 'https://www.behance.net/gallery/249272077/Apertura-de-sistema',
+    linkText: 'Ver proyecto',
+    preview: 'img/portada_wasabi.png',
+    año: '2024',
+  },
+  {
+    id: 3,
+    titulo: 'Intuitiva Panadería',
+    categoriaFiltro: 'branding',
+    descripcion: 'Identidad visual para panadería artesanal local con un lenguaje marcado por lo artesanal y funcional.',
+    tipo: 'Identidad visual / Branding',
+    url: 'https://www.behance.net/gallery/249381687/Intuitiva-Panaderia',
+    linkText: 'Ver proyecto',
+    preview: 'img/portada_intuitiva.jpg',
+    año: '2024',
+  },
+  {
+    id: 4,
+    titulo: 'GG Store',
+    categoriaFiltro: 'web',
+    descripcion: 'Tienda online con interfaz clara, búsqueda de producto simple y un recorrido de compra directo.',
+    tipo: 'Web / E-commerce / Frontend',
+    url: 'https://ggstore-uy.netlify.app/',
+    linkText: 'Ver sitio',
+    preview: 'img/portada_ggstore.png',
+    año: '2024',
+  },
+  {
+    id: 5,
+    titulo: 'Nexum Web',
+    categoriaFiltro: 'web',
+    descripcion: 'Landing de producto digital diseñada para comunicar valor y guiar la conversión con claridad.',
+    tipo: 'Web / Landing / Producto digital',
+    url: 'https://nexum-web.netlify.app/',
+    linkText: 'Ver sitio',
+    preview: 'img/portada_nexum.png',
+    año: '2024',
+  },
+  {
+    id: 6,
+    titulo: 'Mood Atlas',
+    categoriaFiltro: 'experiencia',
+    descripcion: 'Proyecto interactivo orientado a generar una experiencia digital inmersiva y estructurada.',
+    tipo: 'Web / Experiencia digital',
+    url: 'https://mood-atlas.netlify.app/',
+    linkText: 'Ver sitio',
+    preview: 'img/portada_moodatlas.png',
+    año: '2024',
+  },
+];
+
+const crearTarjetaProyecto = (proyecto, index) => {
+  return `
+    <article class="tarjetaTecnica animarEntrada" data-categoria="${proyecto.categoriaFiltro}">
+      <div class="tarjetaTecnica__imagen tarjetaTecnica__imagen--${(index % 6) + 1}">
+        <img src="${proyecto.preview}" alt="Portada ${proyecto.titulo}" loading="lazy" />
+      </div>
+      <div class="tarjetaTecnica__info">
+        <h2 class="tarjetaTecnica__titulo">${proyecto.titulo}</h2>
+        <p class="tarjetaTecnica__tipo">${proyecto.tipo}</p>
+        <p class="tarjetaTecnica__descripcion">${proyecto.descripcion}</p>
+        <a href="${proyecto.url}" class="boton boton--secundario tarjetaTecnica__cta" target="_blank" rel="noopener noreferrer">${proyecto.linkText} →</a>
+      </div>
+    </article>
+  `;
+};
+
+const crearTarjetaHome = (proyecto) => {
+  return `
+    <article class="tarjetaProyecto">
+      <div class="tarjetaProyecto__imagen">
+        <img src="${proyecto.preview}" alt="Portada ${proyecto.titulo}" loading="lazy" />
+      </div>
+      <div class="tarjetaProyecto__info">
+        <h3 class="tarjetaProyecto__titulo">${proyecto.titulo}</h3>
+        <p class="tarjetaProyecto__tipo">${proyecto.tipo}</p>
+        <p class="tarjetaProyecto__descripcion">${proyecto.descripcion}</p>
+        <div class="tarjetaProyecto__acciones">
+          <a href="${proyecto.url}" class="boton boton--secundario" target="_blank" rel="noopener noreferrer">${proyecto.linkText} →</a>
+        </div>
+      </div>
+    </article>
+  `;
+};
+
+const renderProyectosHome = () => {
+  const contenedor = qs('#cardsProyectos');
+  if (!contenedor) return;
+
+  contenedor.innerHTML = proyectos
+    .slice(0, 6)
+    .map((proyecto, index) => crearTarjetaHome(proyecto, index))
+    .join('');
+};
+
+const renderProyectosPage = () => {
+  const contenedor = qs('#rejillaTecnica');
+  if (!contenedor) return;
+
+  contenedor.innerHTML = proyectos
+    .map((proyecto, index) => crearTarjetaProyecto(proyecto, index))
+    .join('');
+};
+
+const inicializarProyectos = () => {
+  renderProyectosHome();
+  renderProyectosPage();
+};
+
+// ---------------------------------------------------------------
 // INDICADOR DE DISPONIBILIDAD
 // Cambia entre verde y rojo según disponibilidad real
 // ---------------------------------------------------------------
@@ -129,7 +261,6 @@ const inicializarNavegacionSuave = () => {
     if (!destino || !contenedor) return;
 
     evento.preventDefault();
-
     destino.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
@@ -167,6 +298,7 @@ const inicializarNavegacionSuave = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   inicializarIndicadorDisponibilidad();
+  inicializarProyectos();
   inicializarObserverSecciones();
   inicializarAnimacionesEntrada();
   inicializarNavegacionSuave();

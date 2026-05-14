@@ -147,82 +147,44 @@
   border-radius: var(--radio-borde);
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  padding: 16px;
   transition: transform 0.4s var(--transicion-rebote);
+  background-color: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
 .tarjetaTecnica:hover .tarjetaTecnica__imagen {
-  transform: scale(1.02);
+  transform: translateY(-4px);
 }
 
-/* Placeholders con gradientes distintos por proyecto */
-.tarjetaTecnica__imagen--1 {
-  background: linear-gradient(135deg, #1a2537 0%, #0d1929 100%);
-  border: 1px solid rgba(37, 99, 235, 0.15);
+.tarjetaTecnica__imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-.tarjetaTecnica__imagen--1::before {
-  content: 'FC';
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--fuente-logo);
-  font-size: 64px;
-  font-weight: 700;
-  color: rgba(217, 119, 6, 0.3);
-  letter-spacing: -2px;
+
+.tarjetaTecnica__imagen--1 {
+  background: linear-gradient(135deg, #1d2430 0%, #131a28 100%);
 }
 
 .tarjetaTecnica__imagen--2 {
-  background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%);
-  border: 1px solid rgba(37, 99, 235, 0.1);
-}
-.tarjetaTecnica__imagen--2::before {
-  content: '</>';
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--fuente-tecnica);
-  font-size: 40px;
-  color: rgba(37, 99, 235, 0.4);
+  background: linear-gradient(135deg, #101827 0%, #16223b 100%);
 }
 
 .tarjetaTecnica__imagen--3 {
-  background: linear-gradient(135deg, #111827 0%, #1c1917 100%);
-  border: 1px solid rgba(217, 119, 6, 0.1);
-}
-.tarjetaTecnica__imagen--3::before {
-  content: '▶';
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  color: rgba(217, 119, 6, 0.35);
+  background: linear-gradient(135deg, #111821 0%, #1e1a24 100%);
 }
 
 .tarjetaTecnica__imagen--4 {
-  background: linear-gradient(135deg, #111827 0%, #0f1729 100%);
-  border: 1px solid rgba(248, 250, 252, 0.06);
+  background: linear-gradient(135deg, #0f1729 0%, #121a2f 100%);
 }
-.tarjetaTecnica__imagen--4::before {
-  content: '◻◻\A◻◻';
-  white-space: pre;
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  color: rgba(37, 99, 235, 0.3);
-  letter-spacing: 8px;
-  line-height: 1.4;
+
+.tarjetaTecnica__imagen--5 {
+  background: linear-gradient(135deg, #122032 0%, #161a2a 100%);
+}
+
+.tarjetaTecnica__imagen--6 {
+  background: linear-gradient(135deg, #171f33 0%, #151b2b 100%);
 }
 
 /* Número del proyecto */
@@ -270,6 +232,15 @@
   font-weight: 700;
   color: var(--color-texto);
   line-height: 1.2;
+}
+
+.tarjetaTecnica__tipo {
+  color: var(--color-autor);
+  font-family: var(--fuente-tecnica);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .tarjetaTecnica__descripcion {

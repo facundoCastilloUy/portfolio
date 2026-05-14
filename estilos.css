@@ -388,7 +388,6 @@ ul { list-style: none; }
   object-position: top center;
   border-radius: var(--radio-borde);
   display: block;
-  /* Si la imagen tiene fondo negro, lo mezclamos */
   mix-blend-mode: normal;
 }
 
@@ -523,166 +522,165 @@ ul { list-style: none; }
 ================================================================ */
 .seccionProyectos {
   background-color: var(--color-fondo);
-  padding: 60px 60px 80px;
+  height: 100vh;
+  padding: 30px 46px 26px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
 }
 
 .seccionProyectos__contenido {
-  max-width: 900px;
+  max-width: 1180px;
   margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
+  height: 100%;
 }
 
 .seccionProyectos__encabezado {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+}
+
+.seccionProyectos__encabezado p {
+  max-width: 720px;
+  color: var(--color-cuerpo);
+  line-height: 1.7;
+  font-size: 14px;
 }
 
 .seccionProyectos__titulo {
   font-family: var(--fuente-logo);
-  font-size: clamp(32px, 4vw, 52px);
+  font-size: clamp(28px, 3.6vw, 50px);
   font-weight: 700;
   color: var(--color-texto);
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
-/* Rejilla de Ladrillos Trabados */
-.rejillaLadrillos {
+.cardsProyectos {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  height: clamp(320px, 40vh, 460px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+  grid-auto-rows: 1fr;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding-right: 8px;
 }
 
-.columnaLadrillos {
+.tarjetaProyecto {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 14px;
+  padding: 0;
+  min-height: 0;
+  border-radius: calc(var(--radio-borde) * 1.25);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s var(--transicion-suave), border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.tarjetaProyecto__info {
+  padding: 14px 16px 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 
-/* Tarjeta de proyecto */
-.tarjetaLadrillo {
-  display: block;
-  border-radius: var(--radio-borde);
+.tarjetaProyecto__imagen {
+  width: 100%;
+  min-height: 110px;
   overflow: hidden;
   position: relative;
-  cursor: pointer;
-  flex: 1;
 }
 
-.tarjetaLadrillo--grande {
-  height: 100%;
-}
-
-.tarjetaLadrillo--pequeña {
-  flex: 1;
-}
-
-.tarjetaLadrillo__imagen {
+.tarjetaProyecto__imagen img {
   width: 100%;
   height: 100%;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radio-borde);
-  transition: transform 0.5s var(--transicion-suave);
-}
-
-/* Placeholders con gradientes temáticos */
-.tarjetaLadrillo__imagen--placeholder {
-  background: linear-gradient(135deg, #1a2537 0%, #0f1923 60%, #1a2537 100%);
-}
-
-.tarjetaLadrillo__imagen--placeholder::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 20px,
-    rgba(37, 99, 235, 0.04) 20px,
-    rgba(37, 99, 235, 0.04) 40px
-  );
-}
-
-.tarjetaLadrillo__imagen--placeholder2 {
-  background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%);
-}
-
-.tarjetaLadrillo__imagen--placeholder3 {
-  background: linear-gradient(135deg, #111827 0%, #1c1917 100%);
-}
-
-.tarjetaLadrillo:hover .tarjetaLadrillo__imagen {
-  transform: scale(1.03);
-}
-
-/* Overlay con info del proyecto */
-.tarjetaLadrillo__overlay {
-  position: absolute;
-  inset: 0;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background: linear-gradient(to top, rgba(17,24,39,0.95) 0%, transparent 60%);
-  transition: background 0.3s ease;
-  z-index: 2;
-}
-
-.tarjetaLadrillo:hover .tarjetaLadrillo__overlay {
-  background: linear-gradient(to top, rgba(17,24,39,0.98) 0%, rgba(17,24,39,0.3) 100%);
-}
-
-.tarjetaLadrillo__overlay h3 {
-  font-family: var(--fuente-logo);
-  font-size: clamp(16px, 2vw, 22px);
-  color: var(--color-texto);
-  margin-bottom: 8px;
-}
-
-.tarjetaLadrillo__overlay p {
-  color: var(--color-cuerpo);
-  font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 12px;
-}
-
-.tarjetaLadrillo__cta {
-  font-family: var(--fuente-tecnica);
-  font-size: 12px;
-  color: var(--color-acento);
-  opacity: 0;
-  transform: translateX(-8px);
-  transition: opacity 0.3s ease, transform 0.3s var(--transicion-rebote);
+  object-fit: cover;
   display: block;
 }
 
-.tarjetaLadrillo:hover .tarjetaLadrillo__cta {
-  opacity: 1;
-  transform: translateX(0);
+.tarjetaProyecto:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.35);
+  background-color: rgba(37, 99, 235, 0.06);
 }
 
-/* Pie de sección proyectos */
+.tarjetaProyecto__titulo {
+  font-family: var(--fuente-logo);
+  font-size: clamp(18px, 2vw, 24px);
+  color: var(--color-texto);
+  line-height: 1.1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tarjetaProyecto__tipo {
+  color: var(--color-autor);
+  font-family: var(--fuente-tecnica);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.tarjetaProyecto__descripcion {
+  color: var(--color-cuerpo);
+  line-height: 1.5;
+  font-size: 13px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tarjetaProyecto__actions,
+.tarjetaProyecto__acciones {
+  margin-top: auto;
+}
+
+.tarjetaProyecto__actions a,
+.tarjetaProyecto__acciones a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-family: var(--fuente-tecnica);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-texto);
+  background-color: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  border-radius: var(--radio-borde);
+  text-decoration: none;
+  transition: all 0.3s var(--transicion-suave);
+  white-space: nowrap;
+}
+
+.tarjetaProyecto__actions a:hover,
+.tarjetaProyecto__acciones a:hover {
+  background-color: rgba(37, 99, 235, 0.2);
+  border-color: rgba(37, 99, 235, 0.5);
+  transform: translateY(-1px);
+}
+
 .seccionProyectos__pie {
   display: flex;
   justify-content: flex-end;
 }
 
-.enlaceVerTodos {
-  font-family: var(--fuente-tecnica);
-  font-size: 13px;
-  color: var(--color-cuerpo);
-  letter-spacing: 0.05em;
-  transition: color 0.3s ease, letter-spacing 0.3s ease;
+.boton--secundario {
+  width: fit-content;
 }
 
-.enlaceVerTodos:hover {
-  color: var(--color-acento);
-  letter-spacing: 0.1em;
-}
+/* Pie de sección proyectos */
 
 /* ================================================================
    SECCIÓN CONTACTO
@@ -928,6 +926,10 @@ ul { list-style: none; }
   }
 
   /* Proyectos */
+  .cardsProyectos {
+    grid-template-columns: 1fr;
+  }
+
   .rejillaLadrillos {
     grid-template-columns: 1fr;
     height: auto;
